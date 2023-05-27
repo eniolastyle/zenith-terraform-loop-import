@@ -6,7 +6,7 @@ variable "domains" {
   }))
   default = {"barham.com" = {ip_address = "1.44.33.66", record_type = "A" }
             "AbuUmair.com" = {ip_address = "1.44.33.66", record_type = "A" }
-            "AbMoney.com" = {ip_address = "1.44.33.66", record_type = "CNAME" }
+            "Absquare.com" = {ip_address = "1.44.33.66", record_type = "CNAME" }
   
   
   }
