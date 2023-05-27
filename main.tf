@@ -25,9 +25,9 @@ variable "domains" {
 variable "load_balancers" {
   type    = map(string)
   default = {
-    "example1.com" = "load-balancer-1-alias.aws.com"
-    "example2.com" = "load-balancer-2-alias.aws.com"
-    "example3.com" = "load-balancer-3-alias.aws.com"
+    "Barham.com" = "load-balancer-1-alias.aws.com"
+    "AbuUmair.com" = "load-balancer-2-alias.aws.com"
+    "AbMoney.com" = "load-balancer-3-alias.aws.com"
   }
 }
 
