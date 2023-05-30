@@ -1,3 +1,37 @@
+variable "domains" {
+  type = list(object({
+    name        = string
+    ip_address  = string
+    record_type = string
+  }))
+  default = {"barham.com" = {ip_address = "1.44.33.66", record_type = "A" }
+            "AbuUmair.com" = {ip_address = "1.44.33.66", record_type = "A" }
+            "AbMoney.com" = {ip_address = "1.44.33.66", record_type = "CNAME" }
+  
+  
+  }
+}
+
+# resource "aws_route53_record" "domain_records" {
+#   count = length(var.domains)
+
+#   zone_id = aws_route53_zone.example_com.zone_id
+#   name    = var.domains[count.index].name
+#   type    = var.domains[count.index].record_type
+#   ttl     = 300  # Modify this TTL as per your requirement
+
+#   records = [var.domains[count.index].ip_address]
+# }
+variable "load_balancers" {
+  type    = map(string)
+  default = {
+    "Barham.com" = "load-balancer-1-alias.aws.com"
+    "AbuUmair.com" = "load-balancer-2-alias.aws.com"
+    "AbMoney.com" = "load-balancer-3-alias.aws.com"
+  }
+}
+
+
 module "instances" {
   source         = "./modules/instance"
   instance_types = ["t2.micro", "t2.medium", "t3.medium"]
