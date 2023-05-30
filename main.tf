@@ -49,9 +49,10 @@ variable "domain_records" {
     record_type = string
   }))
 
-  default = {"barham.com" = {ip_address = "1.44.33.66", record_type = "A" }
-            "AbuUmair.com" = {ip_address = "1.44.33.66", record_type = "A" }
-            "AbMoney.com" = {ip_address = "1.44.33.66", record_type = "CNAME" }  
+  default = {
+    "barham.com" = {ip_address = "1.44.33.66", record_type = "A" }
+    "abuumair.com" = {ip_address = "1.44.33.66", record_type = "A" }
+    "abmoney.com" = {ip_address = "1.44.33.66", record_type = "CNAME" }  
   }
 }
 
