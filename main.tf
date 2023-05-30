@@ -1,16 +1,3 @@
-variable "domains" {
-  type = list(object({
-    name        = string
-    ip_address  = string
-    record_type = string
-  }))
-  default = {"barham.com" = {ip_address = "1.44.33.66", record_type = "A" }
-            "AbuUmair.com" = {ip_address = "1.44.33.66", record_type = "A" }
-            "AbMoney.com" = {ip_address = "1.44.33.66", record_type = "CNAME" }  
-  }
-}
-
-
 module "instances" {
   source         = "./modules/instance"
   instance_types = ["t2.micro", "t2.medium", "t3.medium"]
@@ -61,11 +48,15 @@ variable "domain_records" {
     ip_address = string
     record_type = string
   }))
+
+  default = {"barham.com" = {ip_address = "1.44.33.66", record_type = "A" }
+            "AbuUmair.com" = {ip_address = "1.44.33.66", record_type = "A" }
+            "AbMoney.com" = {ip_address = "1.44.33.66", record_type = "CNAME" }  
+  }
 }
 
 resource "aws_route53_record" "dns_records" {
   for_each = var.domain_records
-
   name    = each.key
   type    = each.value.record_type
   ttl     = 300
